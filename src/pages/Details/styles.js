@@ -33,7 +33,7 @@ export const MarkdownContainer = styled.div`
   }
 
   img {
-    width: 100%;
+    max-width: 100%;
   }
 `;
 
