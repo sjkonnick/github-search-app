@@ -17,19 +17,39 @@
     "styled-components": "^4.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@types/jest": "^26.0.14",
+    "babel-jest": "24.7.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.5",
+    "enzyme-to-json": "^3.5.0",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "fetch-mock": "^9.10.7",
     "jest": "24.7.1",
-    "prettier": "^2.1.2"
+    "jest-enzyme": "^7.1.2",
+    "prettier": "^2.1.2",
+    "redux-mock-store": "^1.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest",
+    "eject": "react-scripts eject",
+    "test:watch": "jest --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env",
+      "@babel/react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-transform-runtime"
+    ]
   },
   "browserslist": {
     "production": [

@@ -14,29 +14,6 @@ class Details extends Component {
     }
 
     await this.props.fetchReadme(this.props.location.query.owner, this.props.location.query.title);
-    // axios
-    //   .get(
-    //     `https://api.github.com/repos/${this.props.location.query.owner}/${this.props.location.query.title}/contents/README.md`,
-    //     {
-    //       headers: {
-    //         Accept: 'application/json',
-    //       },
-    //     },
-    //   )
-    //   .then((result) => {
-    //     this.setState({ markdown: atob(result.data.content), loading: false });
-    //   })
-    //   .catch((error) => {
-    //     let message;
-    //     if (error.response.status === 404) {
-    //       message = 'README Not Found';
-    //     }
-    //     if (error.response.status === 403) {
-    //       message = 'API Rate Limit Exceeded';
-    //     }
-    //
-    //     this.setState({ loading: false, error: message });
-    //   });
   }
 
   render() {

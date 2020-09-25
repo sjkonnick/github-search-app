@@ -47,7 +47,6 @@ export const fetchRepos = (keyword, language, sort, page) => (dispatch) => {
   dispatch(fetchReposRequest());
 
   const url = getQueryUrl(keyword, language, sort, page);
-  console.log(url);
   axios
     .get(url)
     .then((result) => {
@@ -55,7 +54,15 @@ export const fetchRepos = (keyword, language, sort, page) => (dispatch) => {
       return result;
     })
     .catch((error) => {
-      dispatch(fetchReposFailure(error));
+      let message;
+      if (error.response.status === 403) {
+        message = 'API Rate Limit Exceeded';
+      } else if (error.response.status === 422) {
+        message = 'Validation Failed';
+      } else {
+        message = error.response.data.message;
+      }
+      dispatch(fetchReposFailure(message));
       return error;
     });
 };
@@ -109,7 +116,15 @@ export const fetchReadme = (owner, title) => (dispatch) => {
       return result;
     })
     .catch((error) => {
-      dispatch(fetchReadmeFailure(error));
+      let message;
+      if (error.response.status === 404) {
+        message = 'README Not Found';
+      } else if (error.response.status === 403) {
+        message = 'API Rate Limit Exceeded';
+      } else {
+        message = error.response.data.message;
+      }
+      dispatch(fetchReadmeFailure(message));
       return error;
     });
 };
