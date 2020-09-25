@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, CardLink, Image, Title, Description, CardBody } from './styles';
+import { Container, CardLink, Image, Title, Description, CardBody, StarImage, Subtitle } from './styles';
 
 const Card = (props) => (
   <Container>
@@ -9,13 +9,15 @@ const Card = (props) => (
         <Title>{props.title}</Title>
         <Description>{props.description}</Description>
         <Description>
-          <span role="img" aria-label="star">
-            &#11088;
-          </span>
-          : {props.stars}
+          <StarImage>
+            <span role="img" aria-label="star">
+              &#11088;
+            </span>{' '}
+            {props.stars}
+          </StarImage>
         </Description>
-        <Description>Language: {props.language}</Description>
-        <Description>Owner: {props.owner}</Description>
+        <Subtitle>Language: {props.language}</Subtitle>
+        <Subtitle>Owner: {props.owner}</Subtitle>
       </CardBody>
     </CardLink>
   </Container>

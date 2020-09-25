@@ -44,8 +44,11 @@ class Search extends Component {
   };
 
   render() {
+    // Maximum call stack will be exceeded if you have a button for every page with a million results
+    // Pagination shows 10 pages to select centered around selected page
     const pageArray = [];
-    for (let i = 1; i < this.props.repos.totalPages + 1; i++) {
+    const startIndex = this.props.repos.page > 5 ? this.props.repos.page - 5 : 1;
+    for (let i = startIndex; i < startIndex + 10 && i < this.props.repos.totalPages + 1; i++) {
       pageArray.push(i);
     }
 

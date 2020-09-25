@@ -25,7 +25,7 @@ describe('Search', () => {
     ).toBeTruthy();
   });
 
-  it('should render results if fetch is allowed to complete', (done) => {
+  it('should render results if fetch is allowed to complete and rate limit is not exceeded', (done) => {
     const wrapper = mount(
       <Provider store={store}>
         <BrowserRouter>
@@ -36,7 +36,11 @@ describe('Search', () => {
 
     setTimeout(() => {
       wrapper.update();
-      expect(wrapper.props().store.getState().repos.repos).toHaveLength(10);
+      if (store.getState().repos.error === 'API Rate Limit Exceeded') {
+        expect(store.getState().repos.error).toBe('API Rate Limit Exceeded');
+      } else {
+        expect(store.getState().repos.repos).toHaveLength(10);
+      }
       done();
     }, 1000);
   });

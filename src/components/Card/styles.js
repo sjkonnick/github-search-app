@@ -24,6 +24,11 @@ export const Description = styled.p`
   text-align: center;
 `;
 
+export const Subtitle = styled.p`
+  font-size: 16px;
+  text-align: center;
+`;
+
 export const Image = styled.img`
   width: 100%;
 `;
@@ -31,4 +36,13 @@ export const Image = styled.img`
 export const CardLink = styled(Link)`
   text-decoration: none;
   color: black;
+`;
+
+export const StarImage = styled.span`
+  font-size: 20px;
+
+  span {
+    position: relative;
+    top: 1px;
+  }
 `;
